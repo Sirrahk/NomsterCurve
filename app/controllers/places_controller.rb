@@ -1,7 +1,5 @@
 class PlacesController < ApplicationController
     
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-
   def index
     @places = Place.order("name").page(params[:page]).per(5)
   end
@@ -11,51 +9,47 @@ class PlacesController < ApplicationController
   end
   
   def create
-  @place = current_user.places.create(place_params)
-  if @place.valid?
+    Place.create(place_params)
     redirect_to root_path
-  else
-    render :new, status: :unprocessable_entity
-  end
   end
 
-  def show
-    @place= Place.find(params[:id])
-    @comment = Comment.new
-  end
+  #def show
+    #@place= Place.find(params[:id])
+    #@comment = Comment.new
+  #end
   
-  def edit
-    @place = Place.find(params[:id])
+  #def edit
+   # @place = Place.find(params[:id])
     
-    if @place.user != current_user
-        return render plain: 'Oop! Sorry, Nice Try!', status: :forbidden
-    end
+   # if @place.user != current_user
+        #return render plain: 'Oop! Sorry, Nice Try!', status: :forbidden
+   # end
   
-  end
+  #end
   
-  def update
-    @place = Place.find(params[:id])
-      if @place.user != current_user
-       return render plain: 'Oop! Sorry, Nice Try!', status: :forbidden
-     end
+  #def update
+   # @place = Place.find(params[:id])
+#      if @place.user != current_user
+      # return render plain: 'Oop! Sorry, Nice Try!', status: :forbidden
+     #end
       
-    @place.update_attributes(place_params)
-     if @place.valid?
-       redirect_to root_path
-    else
-       render :edit, status: :unprocessable_entity
-    end
-  end
+    #@place.update_attributes(place_params)
+     #if @place.valid?
+       #redirect_to root_path
+    #else
+       #render :edit, status: :unprocessable_entity
+    #end
+  #end
 
-  def destroy
-    @place = Place.find(params[:id])
+  #def destroy
+   # @place = Place.find(params[:id])
 
-        if @place.user != current_user
-         return render plain: 'Not Allowed', status: :forbidden
-  end
-    @place.destroy
-    redirect_to root_path
-  end
+        #if @place.user != current_user
+         #return render plain: 'Not Allowed', status: :forbidden
+  #end
+    #@place.destroy
+    #redirect_to root_path
+  #end
   private
   
   def place_params

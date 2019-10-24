@@ -12,6 +12,7 @@
     </blockquote>
   </div>
 <% end %>
+<br />
   <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
   <%= f.input :message %>
   <%= f.input :rating, as: :select, collection: Comment::RATINGS %>

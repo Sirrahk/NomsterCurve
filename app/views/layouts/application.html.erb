@@ -11,7 +11,7 @@
 
   <body>
   
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+ <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,18 +25,16 @@
       <i class="fa fa-plus-circle"></i>
       New Place
     <% end %>
-  </li>
-</ul>
-
-<ul class="navbar-nav">
-  <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
+        </ul>
     </li>
+  </ul>
+  
+  <ul class="navbar-nav">
+  <% if user_signed_in? %>
     <li class="nav-item">
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
     </li>
-    <% else %>
+  <% else %>
     <li class="nav-item">
       <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
     </li>
@@ -44,18 +42,18 @@
       <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
     </li>
   <% end %>
-  </div>
+</ul>
 </nav>
-    
+
 <% if notice.present? %>
   <p class="alert alert-info"><%= notice %></p>
 <% end %>
-
 <% if alert.present? %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
 <%= yield %>
 
-  </body>
+
+</body>
 </html>
