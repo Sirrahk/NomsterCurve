@@ -63,9 +63,18 @@ body {
   padding: 2px 8px 2px 8px;
 }
 
-
-    #map {
+#map {
       height: 300px;
-    }
- 
+}
+
+clear {
+    clear: both;
+} 
+
+.comments {
+  color: #196147;
+  font-family: 'Sorts Mill Goudy', serif;
+  font-weight: 800;
+  font-size: 30px;
+}
  
